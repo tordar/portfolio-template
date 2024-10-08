@@ -3,16 +3,17 @@
 import { useLayout } from '@/contexts/LayoutContext'
 
 type DynamicAreaProps = {
-    area: 'topLeft' | 'topRight' | 'main' | 'bottomLeft' | 'bottomRight'
+    area: 'topLeft' | 'topRight' | 'description' | 'bottomLeft' | 'bottomRight' | 'main'
     className?: string
 }
 
 export default function DynamicArea({ area, className }: DynamicAreaProps) {
-    const { topLeftContent, topRightContent, mainContent, bottomLeftContent, bottomRightContent } = useLayout()
+    const { topLeftContent, topRightContent, descriptionContent, mainContent, bottomLeftContent, bottomRightContent } = useLayout()
 
     const content = {
         topLeft: topLeftContent,
         topRight: topRightContent,
+        description: descriptionContent,
         main: mainContent,
         bottomLeft: bottomLeftContent,
         bottomRight: bottomRightContent,
