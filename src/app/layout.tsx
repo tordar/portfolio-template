@@ -4,7 +4,7 @@ import './globals.css'
 import NavBar from '../components/NavBar'
 import Socials from '../components/Socials'
 import NavigationButtons from '../components/NavigationButtons'
-import { LayoutProvider } from '../contexts/LayoutContext'
+import { LayoutProvider } from '@/contexts/LayoutContext'
 import DynamicArea from '../components/DynamicArea'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,9 +37,12 @@ export default function RootLayout({
                     <div className="bg-gray-900 col-start-5 col-end-7 row-start-8 row-end-9 border-2 border-white">
                         <NavigationButtons />
                     </div>
-                    <DynamicArea area="bottom" className="bg-gray-900 col-start-7 col-end-11 row-start-8 row-end-9 border-2 border-white" />
-                    <div className="bg-gray-900 col-start-5 col-end-8 row-start-9 row-end-10 border-2 border-white"></div>
-                    <div className="bg-gray-900 col-start-8 col-end-11 row-start-9 row-end-10 border-2 border-white"></div>
+                    <div className="bg-gray-900 col-start-5 col-end-8 row-start-9 row-end-10 border-2 border-white">
+                        <DynamicArea area="bottomLeft" className="bg-gray-900 col-start-7 col-end-11 row-start-8 row-end-9" />
+                    </div>
+                    <div className="bg-gray-900 col-start-8 col-end-11 row-start-9 row-end-10 border-2 border-white">
+                        <DynamicArea area="bottomRight" className="bg-gray-900 col-start-7 col-end-11 row-start-8 row-end-9" />
+                    </div>
                 </div>
             </div>
             {children}

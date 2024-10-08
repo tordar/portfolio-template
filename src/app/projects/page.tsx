@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useLayout } from '@/contexts/LayoutContext'
 
 export default function Home() {
-    const { setTopLeftContent, setTopRightContent, setMainContent, setBottomContent } = useLayout()
+    const { setTopLeftContent, setTopRightContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
 
     useEffect(() => {
         setTopLeftContent(<div className="p-4">projects</div>)
@@ -15,8 +15,9 @@ export default function Home() {
                 <p>Explore our latest exhibitions and events.</p>
             </div>
         )
-        setBottomContent(<div className="p-4">Bottom Content</div>)
-    }, [setTopLeftContent, setTopRightContent, setMainContent, setBottomContent])
+        setBottomLeftContent(<div className="p-4">Bottom Content</div>)
+        setBottomRightContent(<div className="p-4">Bottom right Content</div>)
+    }, [setTopLeftContent, setTopRightContent, setMainContent, setBottomLeftContent, setBottomRightContent])
 
     return null
 }
