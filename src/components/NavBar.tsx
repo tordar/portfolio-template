@@ -8,17 +8,17 @@ export default function NavBar() {
                 <Link href="/" className="hover:text-gray-300 transition-colors">
                     HOME
                 </Link>
-                <Link href="/visit" className="hover:text-gray-300 transition-colors">
-                    VISIT US
+                <Link href="/projects" className="hover:text-gray-300 transition-colors">
+                    PROJECTS
                 </Link>
-                <Link href="/exhibitions" className="hover:text-gray-300 transition-colors">
-                    EXPLORE EXHIBITIONS
+                <Link href="/photography" className="hover:text-gray-300 transition-colors">
+                    PHOTOGRAPHY
                 </Link>
-                <Link href="/collections" className="hover:text-gray-300 transition-colors">
-                    COLLECTIONS
+                <Link href="/running" className="hover:text-gray-300 transition-colors">
+                    RUNNING
                 </Link>
-                <Link href="/contacts" className="hover:text-gray-300 transition-colors">
-                    CONTACTS
+                <Link href="/about" className="hover:text-gray-300 transition-colors">
+                    ABOUT
                 </Link>
             </div>
             <div className="flex items-center space-x-4">

@@ -7,7 +7,7 @@ export default function Home() {
     const { setTopLeftContent, setTopRightContent, setMainContent, setBottomContent } = useLayout()
 
     useEffect(() => {
-        setTopLeftContent(<div className="p-4">Top Left Content</div>)
+        setTopLeftContent(<div className="p-4">projects</div>)
         setTopRightContent(<div className="p-4">Top Right Content</div>)
         setMainContent(
             <div className="p-4">
