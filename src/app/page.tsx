@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useLayout } from '../contexts/LayoutContext'
 import { useContent } from '../contexts/ContentContext'
 import { client } from '../lib/sanity.client'
+import {ChevronRight} from "lucide-react";
+import Link from "next/link";
 
 interface HomeData {
     topLeft: string
@@ -61,10 +63,20 @@ export default function Home() {
             setTopLeftContent(<div className="p-4">{homeData.topLeft}</div>)
             setTopRightContent(<div className="p-4">{homeData.topRight}</div>)
             setDescriptionContent(
-                <div className="p-4">
-                    <h1 className="text-2xl font-bold mb-4">{homeData.description.title}</h1>
-                    <p>{homeData.description.content}</p>
-                </div>
+                <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
+                    <div>
+                        <p className="text-sm mb-2">PROJECT</p>
+                        <h1 className="text-4xl font-bold mb-4">{homeData.description.title}</h1>
+                        <p>{homeData.description.content}</p>
+                    </div>
+                    <Link
+                        href="/"
+                className="flex items-center text-sm hover:underline mt-8"
+            >
+                VIEW ALL PROJECTS
+                <ChevronRight className="w-4 h-4 ml-1"/>
+            </Link>
+        </div>
             )
             setBottomLeftContent(<div className="p-4">{homeData.bottomLeft}</div>)
             setBottomRightContent(<div className="p-4">{homeData.bottomRight}</div>)
@@ -75,13 +87,14 @@ export default function Home() {
         if (content.length > 0) {
             const currentContent = content[currentIndex]
             setMainContent(
-                <div className="bg-gray-900 text-white p-8 flex flex-col justify-between h-full">
+                <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
                     <div>
                         <p className="text-sm mb-2">{currentContent.subtitle}</p>
                         <h1 className="text-4xl font-bold mb-4">{currentContent.title}</h1>
                         <p className="text-sm">{currentContent.description}</p>
                     </div>
                 </div>
+            
             )
         }
     }, [content, currentIndex, setMainContent])

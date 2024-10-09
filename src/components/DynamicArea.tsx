@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayout } from '@/contexts/LayoutContext'
+import { useLayout } from '../contexts/LayoutContext'
 
 type DynamicAreaProps = {
     area: 'topLeft' | 'topRight' | 'description' | 'bottomLeft' | 'bottomRight' | 'main'

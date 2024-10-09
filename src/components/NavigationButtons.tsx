@@ -8,10 +8,10 @@ export default function NavigationButtons() {
 
     return (
         <div className="flex justify-between w-full">
-            <button onClick={previousContent} className="p-2 bg-gray-800 text-white rounded-full">
+            <button onClick={previousContent} className="p-2 bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white rounded-full">
                 <ChevronLeft size={24} />
             </button>
-            <button onClick={nextContent} className="p-2 bg-gray-800 text-white rounded-full">
+            <button onClick={nextContent} className="p-2 bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white rounded-full">
                 <ChevronRight size={24} />
             </button>
         </div>
