@@ -2,45 +2,43 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 
-interface MainContentItem {
-    subtitle: string
-    title: string
-    description: string
+interface ContentItem {
+    [key: string]: any
 }
 
-interface MainContentContextType {
-    mainContent: MainContentItem[]
+interface ContentContextType {
+    content: ContentItem[]
     currentIndex: number
-    setMainContent: (content: MainContentItem[]) => void
+    setContent: (content: ContentItem[]) => void
     nextContent: () => void
     previousContent: () => void
 }
 
-const MainContentContext = createContext<MainContentContextType | undefined>(undefined)
+const ContentContext = createContext<ContentContextType | undefined>(undefined)
 
-export function MainContentProvider({ children }: { children: ReactNode }) {
-    const [mainContent, setMainContent] = useState<MainContentItem[]>([])
+export function ContentProvider({ children }: { children: ReactNode }) {
+    const [content, setContent] = useState<ContentItem[]>([])
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const nextContent = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % mainContent.length)
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % content.length)
     }
 
     const previousContent = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + mainContent.length) % mainContent.length)
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + content.length) % content.length)
     }
 
     return (
-        <MainContentContext.Provider value={{ mainContent, currentIndex, setMainContent, nextContent, previousContent }}>
+        <ContentContext.Provider value={{ content, currentIndex, setContent, nextContent, previousContent }}>
             {children}
-        </MainContentContext.Provider>
+        </ContentContext.Provider>
     )
 }
 
-export function useMainContent() {
-    const context = useContext(MainContentContext)
+export function useContent() {
+    const context = useContext(ContentContext)
     if (context === undefined) {
-        throw new Error('useMainContent must be used within a MainContentProvider')
+        throw new Error('useContent must be used within a ContentProvider')
     }
     return context
 }
