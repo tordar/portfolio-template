@@ -60,10 +60,10 @@ export default function Home() {
 
     useEffect(() => {
         if (homeData) {
-            setTopLeftContent(<div className="p-4">{homeData.topLeft}</div>)
-            setTopRightContent(<div className="p-4">{homeData.topRight}</div>)
+            setTopLeftContent(<div className="theme-area p-4">{homeData.topLeft}</div>)
+            setTopRightContent(<div className="theme-area p-4">{homeData.topRight}</div>)
             setDescriptionContent(
-                <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
+                <div className="theme-area p-8 flex flex-col justify-between h-full">
                     <div>
                         <p className="text-sm mb-2">PROJECT</p>
                         <h1 className="text-4xl font-bold mb-4">{homeData.description.title}</h1>
@@ -78,8 +78,8 @@ export default function Home() {
             </Link>
         </div>
             )
-            setBottomLeftContent(<div className="p-4">{homeData.bottomLeft}</div>)
-            setBottomRightContent(<div className="p-4">{homeData.bottomRight}</div>)
+            setBottomLeftContent(<div className="theme-area p-4">{homeData.bottomLeft}</div>)
+            setBottomRightContent(<div className="theme-area p-4">{homeData.bottomRight}</div>)
         }
     }, [homeData, setTopLeftContent, setTopRightContent, setDescriptionContent, setBottomLeftContent, setBottomRightContent])
 
@@ -87,7 +87,7 @@ export default function Home() {
         if (content.length > 0) {
             const currentContent = content[currentIndex]
             setMainContent(
-                <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
+                <div className="theme-area p-8 flex flex-col justify-between h-full">
                     <div>
                         <p className="text-sm mb-2">{currentContent.subtitle}</p>
                         <h1 className="text-4xl font-bold mb-4">{currentContent.title}</h1>

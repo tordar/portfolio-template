@@ -10,7 +10,7 @@ export default function NavBar() {
     const { theme, toggleTheme } = useTheme()
 
     return (
-        <nav className=" py-4 px-6 flex justify-between items-center border-2 " data-theme-area>
+        <nav className="theme-area py-4 px-6 flex justify-between items-center border-2">
             <div className="lg:hidden">
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}

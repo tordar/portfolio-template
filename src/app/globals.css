@@ -4,12 +4,12 @@
 
 :root {
   --background: white;
-  --text: #111827;
-  --border: #D1D5DB;
+  --text: #18181b;
+  --border: #18181b;
 }
 
 [data-theme="dark"] {
-  --background: #111827;
+  --background: #18181b;
   --text: white;
   --border: #4B5563;
 }
@@ -19,7 +19,14 @@
   color: var(--text);
 }
 
-[data-theme-area] {
+.theme-area {
   background-color: var(--background);
   border-color: var(--border);
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
 }
