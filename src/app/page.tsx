@@ -63,7 +63,7 @@ export default function Home() {
             setTopLeftContent(<div className="p-4">{homeData.topLeft}</div>)
             setTopRightContent(<div className="p-4">{homeData.topRight}</div>)
             setDescriptionContent(
-                <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
+                <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
                     <div>
                         <p className="text-sm mb-2">PROJECT</p>
                         <h1 className="text-4xl font-bold mb-4">{homeData.description.title}</h1>
@@ -87,7 +87,7 @@ export default function Home() {
         if (content.length > 0) {
             const currentContent = content[currentIndex]
             setMainContent(
-                <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
+                <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
                     <div>
                         <p className="text-sm mb-2">{currentContent.subtitle}</p>
                         <h1 className="text-4xl font-bold mb-4">{currentContent.title}</h1>

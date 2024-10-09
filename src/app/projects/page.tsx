@@ -12,7 +12,7 @@ export default function Home() {
         setTopLeftContent(<div className="p-4">projects</div>)
         setTopRightContent(<div className="p-4">Top Right Content</div>)
         setDescriptionContent(
-            <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
+            <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
                 <div>
                     <p className="text-sm mb-2">PROJECT</p>
                     <h1 className="text-4xl font-bold mb-4">Placeholder for project name</h1>
@@ -28,7 +28,7 @@ export default function Home() {
             </div>
         )
         setMainContent(
-            <div className="bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white p-8 flex flex-col justify-between h-full">
+            <div className="p-8 flex flex-col justify-between h-full" data-theme-area>
                 <div>
                     <p className="text-sm mb-2">MAIN</p>
                     <h1 className="text-4xl font-bold mb-4">Content goes here</h1>

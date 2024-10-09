@@ -10,7 +10,7 @@ export default function NavBar() {
     const { theme, toggleTheme } = useTheme()
 
     return (
-        <nav className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-4 px-6 flex justify-between items-center border-2 border-gray-300 dark:border-gray-700">
+        <nav className=" py-4 px-6 flex justify-between items-center border-2 " data-theme-area>
             <div className="lg:hidden">
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
