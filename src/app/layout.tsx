@@ -45,9 +45,9 @@ export default function RootLayout({
         <ClientThemeProvider>
             <LayoutProvider>
                 <ContentProvider>
-                    <div className="min-h-screen  flex flex-col gap-1 p-1" data-theme-container>
+                    <div className="min-h-screen  flex flex-col" data-theme-container>
                         <NavBar />
-                        <div className="flex-1 grid grid-cols-1 md:grid-cols-10 grid-rows-none md:grid-rows-[repeat(9,1fr)] gap-1">
+                        <div className="flex-1 grid grid-cols-1 md:grid-cols-10 grid-rows-none md:grid-rows-[repeat(9,1fr)] ">
                             <DynamicArea area="topLeft" className="theme-area md:col-span-2 md:row-span-2 border-2"/>
                             <DynamicArea area="topRight" className="theme-area md:col-span-2 md:row-span-2 border-2"/>
                             <DynamicArea area="description" className="theme-area md:col-start-1 md:col-end-5 md:row-start-3 md:row-end-8 border-2 "/>

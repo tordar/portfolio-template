@@ -17,11 +17,13 @@
 [data-theme-container] {
   background-color: var(--background);
   color: var(--text);
+  fill: var(--text);
 }
 
 .theme-area {
   background-color: var(--background);
   border-color: var(--border);
+  
 }
 
 *, ::before, ::after {
