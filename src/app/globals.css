@@ -3,21 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: white;
+  --background: #f4f4f5;
   --text: #18181b;
   --border: #18181b;
+  --hover-bg: #18181b;
+  --hover-text: #f4f4f5;
 }
 
 [data-theme="dark"] {
   --background: #18181b;
-  --text: white;
+  --text: #f4f4f5;
   --border: #4B5563;
+  --hover-bg: #4B5563;
+  --hover-text: #18181b;
 }
 
 [data-theme-container] {
   background-color: var(--background);
   color: var(--text);
   fill: var(--text);
+  border-color: var(--border);
 }
 
 .theme-area {
@@ -31,4 +36,35 @@
   border-width: 0;
   border-style: solid;
   border-color: #e5e7eb;
+}
+
+@layer base {
+  *, ::before, ::after {
+    border-color: transparent;
+  }
+}
+
+@layer components {
+  .border-2 {
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text)
+  }
+
+  @media (min-width: 1024px) {
+    .nav-link {
+      height: 100%;
+    }
+  }
 }
