@@ -28,7 +28,7 @@
 .theme-area {
   background-color: var(--background);
   border-color: var(--border);
-  
+  fill: var(--text);
 }
 
 *, ::before, ::after {
