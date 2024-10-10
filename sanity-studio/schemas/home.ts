@@ -18,18 +18,28 @@ export default defineType({
         defineField({
             name: 'description',
             title: 'Description',
-            type: 'object',
-            fields: [
-                defineField({
-                    name: 'title',
-                    title: 'Title',
-                    type: 'string',
-                }),
-                defineField({
-                    name: 'content',
-                    title: 'Content',
-                    type: 'text',
-                }),
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        defineField({
+                            name: 'title',
+                            title: 'Title',
+                            type: 'string',
+                        }),
+                        defineField({
+                            name: 'content',
+                            title: 'Content',
+                            type: 'text',
+                        }),
+                        defineField({
+                            name: 'link',
+                            title: 'Link',
+                            type: 'text',
+                        }),
+                    ],
+                },
             ],
         }),
         defineField({

@@ -15,7 +15,7 @@ export default function Socials() {
                 <LinkedinIcon className="w-6 h-6" />
                 <span className="sr-only">Instagram</span>
             </a>
-            <a href="#"
+            <a href="https://www.strava.com/athletes/29745314"
                className="theme-area flex items-center justify-center hover:bg-gray-800 transition-colors border-l border-t ">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 384 512" className="w-6 h-6" >
