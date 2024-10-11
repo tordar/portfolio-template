@@ -13,9 +13,13 @@
 [data-theme="dark"] {
   --background: #18181b;
   --text: #f4f4f5;
-  --border: #4B5563;
+  --border: #f4f4f5;
   --hover-bg: #4B5563;
   --hover-text: #18181b;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 [data-theme-container] {
@@ -23,12 +27,14 @@
   color: var(--text);
   fill: var(--text);
   border-color: var(--border);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .theme-area {
   background-color: var(--background);
   border-color: var(--border);
   fill: var(--text);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 *, ::before, ::after {
@@ -48,6 +54,7 @@
   .border-2 {
     border-width: 2px;
     border-style: solid;
+    transition: border-color 0.3s ease;
   }
 
   .nav-link {
