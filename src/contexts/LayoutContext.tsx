@@ -3,14 +3,12 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 
 type LayoutContextType = {
-    topLeftContent: ReactNode
-    topRightContent: ReactNode
+    topContent: ReactNode
     descriptionContent: ReactNode
     bottomLeftContent: ReactNode
     bottomRightContent: ReactNode
     mainContent: ReactNode
-    setTopLeftContent: (content: ReactNode) => void
-    setTopRightContent: (content: ReactNode) => void
+    setTopContent: (content: ReactNode) => void
     setDescriptionContent: (content: ReactNode) => void
     setBottomLeftContent: (content: ReactNode) => void
     setBottomRightContent: (content: ReactNode) => void
@@ -20,8 +18,7 @@ type LayoutContextType = {
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined)
 
 export function LayoutProvider({ children }: { children: ReactNode }) {
-    const [topLeftContent, setTopLeftContent] = useState<ReactNode>(null)
-    const [topRightContent, setTopRightContent] = useState<ReactNode>(null)
+    const [topContent, setTopContent] = useState<ReactNode>(null)
     const [descriptionContent, setDescriptionContent] = useState<ReactNode>(null)
     const [bottomLeftContent, setBottomLeftContent] = useState<ReactNode>(null)
     const [bottomRightContent, setBottomRightContent] = useState<ReactNode>(null)
@@ -30,14 +27,12 @@ export function LayoutProvider({ children }: { children: ReactNode }) {
     return (
         <LayoutContext.Provider
             value={{
-                topLeftContent,
-                topRightContent,
+                topContent,
                 descriptionContent,
                 bottomLeftContent,
                 bottomRightContent,
                 mainContent,
-                setTopLeftContent,
-                setTopRightContent,
+                setTopContent,
                 setDescriptionContent,
                 setBottomLeftContent,
                 setBottomRightContent,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useState } from 'react'
 import { useLayout } from '../../contexts/LayoutContext'
 import { useContent } from '../../contexts/ContentContext'
 import { client } from '../../lib/sanity.client'
@@ -9,8 +9,9 @@ import Link from "next/link"
 import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 
-interface HomeData {
-    top: string
+interface AboutData {
+    topLeft: string
+    topRight: string
     description: {
         title: string
         content: string
@@ -29,32 +30,20 @@ interface HomeData {
     bottomRight: string
 }
 
-function TransitionWrapper({ children, isVisible }) {
-    return (
-        <div
-            className={`transition-opacity duration-500 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-        >
-            {children}
-        </div>
-    )
-}
-
-export default function Home() {
-    const { setTopContent, setDescriptionContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
+export default function About() {
+    const { setTopLeftContent, setTopRightContent, setDescriptionContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
     const { setContent, content, currentIndex } = useContent()
-    const [homeData, setHomeData] = useState<HomeData | null>(null)
+    const [aboutData, setAboutData] = useState<AboutData | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
-    const [isPending, startTransition] = useTransition()
-    
+
     useEffect(() => {
-        const fetchHomeData = async () => {
+        const fetchAboutData = async () => {
             setIsLoading(true)
             setError(null)
-            const query = `*[_type == "home"][0]{
-                top,
+            const query = `*[_type == "about"][0]{
+                topLeft,
+                topRight,
                 description,
                 mainContent[]{
                     subtitle,
@@ -66,48 +55,43 @@ export default function Home() {
             }`
 
             try {
-                const data = await client.fetch<HomeData>(query)
-                setHomeData(data)
+                const data = await client.fetch<AboutData>(query)
+                setAboutData(data)
                 setContent(data.mainContent)
             } catch (error) {
-                console.error("Failed to fetch home data:", error)
+                console.error("Failed to fetch about data:", error)
                 setError("Failed to load content. Please try again later.")
             } finally {
                 setIsLoading(false)
             }
         }
 
-        fetchHomeData()
+        fetchAboutData()
     }, [setContent])
 
     useEffect(() => {
-        if (homeData) {
-            setTopContent(<div className="theme-area p-4">{homeData.top}</div>)
-            setBottomLeftContent(<div className="theme-area p-4">{homeData.bottomLeft}</div>)
-            setBottomRightContent(<div className="theme-area p-4">{homeData.bottomRight}</div>)
+        if (aboutData) {
+            setTopLeftContent(<div className="theme-area p-4">{aboutData.topLeft}</div>)
+            setTopRightContent(<div className="theme-area p-4">{aboutData.topRight}</div>)
+            setBottomLeftContent(<div className="theme-area p-4">{aboutData.bottomLeft}</div>)
+            setBottomRightContent(<div className="theme-area p-4">{aboutData.bottomRight}</div>)
         }
-    }, [homeData, setTopContent, setBottomLeftContent, setBottomRightContent])
+    }, [aboutData, setTopLeftContent, setTopRightContent, setBottomLeftContent, setBottomRightContent])
 
     useEffect(() => {
-        if (content.length > 0 && homeData) {
-            startTransition(() => {
+        if (content.length > 0 && aboutData) {
             const currentContent = content[currentIndex]
-            const currentDescription = homeData.description[currentIndex] || homeData.description[0]
+            const currentDescription = aboutData.description[currentIndex] || aboutData.description[0]
 
-                setMainContent(
-                    <TransitionWrapper isVisible={!isPending}>
-                        <MainContentSection content={currentContent} />
-                    </TransitionWrapper>
-                )
+            setMainContent(
+                <MainContentSection content={currentContent} />
+            )
 
-                setDescriptionContent(
-                    <TransitionWrapper isVisible={!isPending}>
-                        <DescriptionSection description={currentDescription} />
-                    </TransitionWrapper>
-                )
-        })
+            setDescriptionContent(
+                <DescriptionSection description={currentDescription} />
+            )
         }
-    }, [content, currentIndex, setMainContent, setDescriptionContent, homeData])
+    }, [content, currentIndex, setMainContent, setDescriptionContent, aboutData])
 
     if (isLoading) {
         return <div className="text-center p-4">Loading...</div>

@@ -34,8 +34,7 @@ export default function NavBar() {
                 <div className="flex flex-col lg:flex-row">
                     <Link href="/" className="nav-link">HOME</Link>
                     <Link href="/projects" className="nav-link">PROJECTS</Link>
-                    <Link href="/photography" className="nav-link">PHOTOGRAPHY</Link>
-                    <Link href="/running" className="nav-link">RUNNING</Link>
+                    <Link href="/products" className="nav-link">PRODUCTS</Link>
                     <Link href="/about" className="nav-link">ABOUT</Link>
                 </div>
                 <div className="flex flex-col lg:flex-row items-stretch">
