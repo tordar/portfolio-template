@@ -10,8 +10,7 @@ import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 
 interface AboutData {
-    topLeft: string
-    topRight: string
+    top: string
     description: {
         title: string
         content: string
@@ -31,7 +30,7 @@ interface AboutData {
 }
 
 export default function About() {
-    const { setTopLeftContent, setTopRightContent, setDescriptionContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
+    const { setTopContent, setDescriptionContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
     const { setContent, content, currentIndex } = useContent()
     const [aboutData, setAboutData] = useState<AboutData | null>(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -42,8 +41,7 @@ export default function About() {
             setIsLoading(true)
             setError(null)
             const query = `*[_type == "about"][0]{
-                topLeft,
-                topRight,
+                top,
                 description,
                 mainContent[]{
                     subtitle,
@@ -71,12 +69,11 @@ export default function About() {
 
     useEffect(() => {
         if (aboutData) {
-            setTopLeftContent(<div className="theme-area p-4">{aboutData.topLeft}</div>)
-            setTopRightContent(<div className="theme-area p-4">{aboutData.topRight}</div>)
+            setTopContent(<div className="theme-area p-4">{aboutData.top}</div>)
             setBottomLeftContent(<div className="theme-area p-4">{aboutData.bottomLeft}</div>)
             setBottomRightContent(<div className="theme-area p-4">{aboutData.bottomRight}</div>)
         }
-    }, [aboutData, setTopLeftContent, setTopRightContent, setBottomLeftContent, setBottomRightContent])
+    }, [aboutData, setTopContent, setBottomLeftContent, setBottomRightContent])
 
     useEffect(() => {
         if (content.length > 0 && aboutData) {
