@@ -9,7 +9,7 @@ import Link from "next/link"
 import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 
-interface HomeData {
+interface ProjectsData {
     top: string
     description: {
         title: string
@@ -44,7 +44,7 @@ function TransitionWrapper({ children, isVisible }) {
 export default function Home() {
     const { setTopContent, setDescriptionContent, setMainContent, setBottomLeftContent, setBottomRightContent } = useLayout()
     const { setContent, content, currentIndex } = useContent()
-    const [homeData, setHomeData] = useState<HomeData | null>(null)
+    const [projectsData, setProjectsData] = useState<ProjectsData | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [isPending, startTransition] = useTransition()
@@ -53,7 +53,7 @@ export default function Home() {
         const fetchHomeData = async () => {
             setIsLoading(true)
             setError(null)
-            const query = `*[_type == "home"][0]{
+            const query = `*[_type == "projects"][0]{
                 top,
                 description,
                 mainContent[]{
@@ -66,11 +66,11 @@ export default function Home() {
             }`
 
             try {
-                const data = await client.fetch<HomeData>(query)
-                setHomeData(data)
+                const data = await client.fetch<ProjectsData>(query)
+                setProjectsData(data)
                 setContent(data.mainContent)
             } catch (error) {
-                console.error("Failed to fetch home data:", error)
+                console.error("Failed to fetch projects data:", error)
                 setError("Failed to load content. Please try again later.")
             } finally {
                 setIsLoading(false)
@@ -81,18 +81,18 @@ export default function Home() {
     }, [setContent])
 
     useEffect(() => {
-        if (homeData) {
-            setTopContent(<div className="theme-area p-4">{homeData.top}</div>)
-            setBottomLeftContent(<div className="theme-area p-4">{homeData.bottomLeft}</div>)
-            setBottomRightContent(<div className="theme-area p-4">{homeData.bottomRight}</div>)
+        if (projectsData) {
+            setTopContent(<div className="theme-area p-4">{projectsData.top}</div>)
+            setBottomLeftContent(<div className="theme-area p-4">{projectsData.bottomLeft}</div>)
+            setBottomRightContent(<div className="theme-area p-4">{projectsData.bottomRight}</div>)
         }
-    }, [homeData, setTopContent, setBottomLeftContent, setBottomRightContent])
+    }, [projectsData, setTopContent, setBottomLeftContent, setBottomRightContent])
 
     useEffect(() => {
-        if (content.length > 0 && homeData) {
+        if (content.length > 0 && projectsData) {
             startTransition(() => {
             const currentContent = content[currentIndex]
-            const currentDescription = homeData.description[currentIndex] || homeData.description[0]
+            const currentDescription = projectsData.description[currentIndex] || projectsData.description[0]
 
                 setMainContent(
                     <TransitionWrapper isVisible={!isPending}>
@@ -107,7 +107,7 @@ export default function Home() {
                 )
         })
         }
-    }, [content, currentIndex, setMainContent, setDescriptionContent, homeData])
+    }, [content, currentIndex, setMainContent, setDescriptionContent, projectsData])
 
     if (isLoading) {
         return <div className="text-center p-4">Loading...</div>

@@ -82,7 +82,7 @@ function DescriptionSection({ description }) {
     return (
         <div className="theme-area p-8 flex flex-col justify-between h-full">
             <div>
-                <p className="text-sm mb-2">PROJECT</p>
+                <p className="text-sm mb-2">Home</p>
                 <h1 className="text-4xl font-bold mb-4">{description.title}</h1>
                 <p>{description.content}</p>
                 <Link
