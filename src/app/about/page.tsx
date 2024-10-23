@@ -1,3 +1,4 @@
+/*
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -149,4 +150,4 @@ function DescriptionSection({ description }) {
             </div>
         </div>
     )
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 'use client'
 
 import { useEffect, useState, useTransition } from 'react'
@@ -148,7 +149,7 @@ function DescriptionSection({ description }) {
     return (
         <div className="theme-area p-8 flex flex-col justify-between h-full">
             <div>
-                <p className="text-sm mb-2">PROJECT</p>
+                <p className="text-sm mb-2">PROJECT DESCRIPTION</p>
                 <h1 className="text-4xl font-bold mb-4">{description.title}</h1>
                 <p>{description.content}</p>
                 <Link
@@ -158,14 +159,7 @@ function DescriptionSection({ description }) {
                     VIEW PROJECT LINK
                     <ChevronRight className="w-4 h-4 ml-1"/>
                 </Link>
-                <Link
-                    href="https://github.com/tordar?tab=repositories"
-                    className="flex items-center text-sm hover:underline mt-8"
-                >
-                    VIEW ALL PROJECTS
-                    <ChevronRight className="w-4 h-4 ml-1"/>
-                </Link>
             </div>
         </div>
     )
-}
+}*/
