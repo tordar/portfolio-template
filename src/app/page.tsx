@@ -1,21 +1,63 @@
 import { Button } from "../components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
 import { Github, Linkedin, Mail } from "lucide-react"
+
+interface Project {
+    title: string;
+    description: string;
+    github: string;
+    live?: string;
+    tags: string[];
+    image: string;
+}
+
+const projects: Project[] = [
+    {
+        title: "Food-Planner",
+        description: "A project made for personal tracking of meal recipes and ideas. Connected to a (private) MongoDB database.",
+        github: "https://github.com/tordar/food-bank",
+        live: "https://food-bank-chi.vercel.app/",
+        tags: ["React", "MongoDB", "Next.js"],
+        image: "/placeholder.svg?height=200&width=300"
+    },
+    {
+        title: "Strava-Visualiser",
+        description: "A project made to visualise various Strava data. Connects to a personal account and fetches data from the Strava API",
+        github: "https://github.com/tordar/shadcn-strava-visualiser",
+        live: "https://shadcn-test-sepia.vercel.app/",
+        tags: ["React", "Strava API", "Data Visualization", "Next.js"],
+        image: "/placeholder.svg?height=200&width=300"
+    },
+    {
+        title: "Snapchat Memories Downloader",
+        description: "A project made to download all memories from Snapchat in bulk.",
+        github: "https://github.com/tordar/Download-Snapchat-Memories",
+        tags: ["Python", "Snapchat API"],
+        image: "/placeholder.svg?height=200&width=300"
+    },
+    {
+        title: "Sats Map",
+        description: "A project where I attempted to extract all the visits I had to Sats and visualised them on a Leaflet map.",
+        github: "https://github.com/tordar/sats-visualiser",
+        tags: ["React", "Leaflet", "Data Visualization"],
+        image: "/placeholder.svg?height=200&width=300"
+    }
+]
 
 export default function Portfolio() {
     return (
         <div className="min-h-screen bg-background font-sans">
-            <header className="bg-primary text-primary-foreground py-12 text-center">
+            <header className="bg-muted py-12 text-center">
                 <h1 className="text-4xl font-bold mb-2">Tordar Tømmervik</h1>
                 <p className="text-xl">Full-stack developer</p>
             </header>
 
-            <main className="container mx-auto px-4 py-8 max-w-4xl">
+            <main className="container mx-auto px-4 py-8 max-w-5xl">
                 <section className="mb-12">
                     <h2 className="text-3xl font-semibold mb-4">About Me</h2>
                     <p className="text-muted-foreground">
-                        I'm a passionate full-stack developer with experience in React, Next.js, and modern web technologies. When I'm not working, I'm probably running, cooking, taking pictures,
-                        or planning on my next big adventure.
+                        I&#39;m a passionate full-stack developer with experience in React, Next.js, and modern web technologies. When I&#39;m not working, I&#39;m probably running, cooking, taking pictures, or planning my next adventure.
                     </p>
                 </section>
 
@@ -23,19 +65,39 @@ export default function Portfolio() {
                     <h2 className="text-3xl font-semibold mb-4">My Projects</h2>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {projects.map((project, index) => (
-                            <Card key={index}>
+                            <Card key={index} className="flex flex-col overflow-hidden">
+                                {/*<img*/}
+                                {/*    src={project.image}*/}
+                                {/*    alt={`${project.title} preview`}*/}
+                                {/*    className="w-full h-48 object-cover"*/}
+                                {/*/>*/}
                                 <CardHeader>
-                                    <CardTitle>{project.title}</CardTitle>
+                                    <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
                                     <CardDescription>{project.description}</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <Button asChild>
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer">Source Code</a>
-                                    </Button>
-                                    <Button asChild>
-                                        <a href={project.live} target="_blank" rel="noopener noreferrer">Live Link</a>
-                                    </Button>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tags.map((tag, tagIndex) => (
+                                            <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                                        ))}
+                                    </div>
                                 </CardContent>
+                                <CardFooter className="mt-auto">
+                                    <div className="flex flex-col sm:flex-row gap-2 w-full">
+                                        <Button asChild className="w-full sm:w-auto">
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                                Source Code
+                                            </a>
+                                        </Button>
+                                        {project.live && (
+                                            <Button asChild variant="secondary" className="w-full sm:w-auto">
+                                                <a href={project.live} target="_blank" rel="noopener noreferrer">
+                                                    Live Demo
+                                                </a>
+                                            </Button>
+                                        )}
+                                    </div>
+                                </CardFooter>
                             </Card>
                         ))}
                     </div>
@@ -66,24 +128,3 @@ export default function Portfolio() {
         </div>
     )
 }
-
-const projects = [
-    {
-        title: "Food-Planner",
-        description: "A project made for personal tracking of meal recipes and ideas. Connected to a (private) MongoDB database.",
-        github: "https://github.com/tordar/food-bank",
-        live: "https://food-bank-chi.vercel.app/"
-    },
-    {
-        title: "Strava-Visualiser",
-        description: "A project made to visualise various Strava data. Connects to a personal account and fetches data from the Strava API",
-        github: "https://github.com/tordar/shadcn-strava-visualiser",
-        live: "https://shadcn-test-sepia.vercel.app/"
-    },
-    {
-        title: "Snapchat Memories Downloader",
-        description: "A project made to download all memories from Snapchat in bulk.",
-        github: "https://github.com/tordar/Download-Snapchat-Memories",
-        live: "https://project1.example.com"
-    }
-]
