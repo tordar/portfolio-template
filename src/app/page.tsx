@@ -14,8 +14,8 @@ export default function Portfolio() {
                 <section className="mb-12">
                     <h2 className="text-3xl font-semibold mb-4">About Me</h2>
                     <p className="text-muted-foreground">
-                        I'm a passionate web developer with experience in React, Next.js, and modern web technologies. I love creating
-                        user-friendly and efficient web applications that solve real-world problems.
+                        I'm a passionate full-stack developer with experience in React, Next.js, and modern web technologies. When I'm not working, I'm probably running, cooking, taking pictures,
+                        or planning on my next big adventure.
                     </p>
                 </section>
 
