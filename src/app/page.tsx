@@ -45,13 +45,21 @@ export default function Portfolio() {
             <footer className="bg-muted py-6 mt-12">
                 <div className="container mx-auto px-4 flex justify-center space-x-4">
                     <a href="https://github.com/tordar" target="_blank" rel="noopener noreferrer">
-                        <Github className="h-6 w-6" />
+                        <Github className="h-6 w-6"/>
                     </a>
                     <a href="https://linkedin.com/in/tordar" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-6 w-6" />
+                        <Linkedin className="h-6 w-6"/>
                     </a>
                     <a href="mailto:tordar.tommervik@gmail.com">
-                        <Mail className="h-6 w-6" />
+                        <Mail className="h-6 w-6"/>
+                    </a>
+                    <a href="https://www.strava.com/athletes/29745314">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 384 512" className="w-6 h-6">
+                            <path
+                                d="M158.4 0L7 292h89.2l62.2-116.1L220.1 292h88.5zm150.2 292l-43.9 88.2-44.6-88.2h-67.6l112.2 220 111.5-220z"/>
+                        </svg>
+                        <span className="sr-only">Facebook</span>
                     </a>
                 </div>
             </footer>
@@ -73,7 +81,7 @@ const projects = [
         live: "https://shadcn-test-sepia.vercel.app/"
     },
     {
-        title: "Strava Memories Downloader",
+        title: "Snapchat Memories Downloader",
         description: "A project made to download all memories from Snapchat in bulk.",
         github: "https://github.com/tordar/Download-Snapchat-Memories",
         live: "https://project1.example.com"
