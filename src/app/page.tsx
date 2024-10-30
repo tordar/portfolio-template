@@ -42,6 +42,14 @@ const projects: Project[] = [
         github: "https://github.com/tordar/sats-visualiser",
         tags: ["React", "Leaflet", "Data Visualization"],
         image: "/placeholder.svg?height=200&width=300"
+    },
+    {
+        title: "Event Newsletter",
+        description: "A newsletter service built on top of the Broadcast API. Allows the user to subscribe to new events in Oslo, based on their preferences.",
+        github: "https://github.com/tordar/events-bot",
+        live: "https://event-email-client-2-production.up.railway.app/",
+        tags: ["Python", "SendGrid"],
+        image: "/placeholder.svg?height=200&width=300"
     }
 ]
 
