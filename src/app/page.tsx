@@ -15,10 +15,10 @@ interface Project {
 const projects: Project[] = [
     {
         title: "Food-Planner",
-        description: "A project made for personal tracking of meal recipes and ideas. Connected to a (private) MongoDB database.",
+        description: "A project made for personal tracking of meal recipes and ideas. Connected to a MongoDB database, with user authentication via Google.",
         github: "https://github.com/tordar/food-bank",
         live: "https://food-bank-chi.vercel.app/",
-        tags: ["React", "MongoDB", "Next.js"],
+        tags: ["React", "MongoDB", "Next.js", "OAuth 2.0"],
         image: "/placeholder.svg?height=200&width=300"
     },
     {
