@@ -31,7 +31,7 @@ const projects: Project[] = [
     },
     {
         title: "Snapchat Memories Downloader",
-        description: "A project made to download all memories from Snapchat in bulk.",
+        description: "A project made to download all memories from Snapchat in bulk. Uses a simple HTML interface to visualise and help download memories.",
         github: "https://github.com/tordar/Download-Snapchat-Memories",
         tags: ["Python", "Snapchat API"],
         image: "/placeholder.svg?height=200&width=300"
@@ -49,6 +49,13 @@ const projects: Project[] = [
         github: "https://github.com/tordar/events-bot",
         live: "https://event-email-client-2-production.up.railway.app/",
         tags: ["Python", "SendGrid"],
+        image: "/placeholder.svg?height=200&width=300"
+    },
+    {
+        title: "Garmin Sleep Extractor",
+        description: "A Python script designed to extract the sleep data from Garmin Connect. Can also be used to extract other useful data.",
+        github: "https://github.com/tordar/garmin-sleep-extractor",
+        tags: ["Python", "Garmin Connect"],
         image: "/placeholder.svg?height=200&width=300"
     }
 ]
