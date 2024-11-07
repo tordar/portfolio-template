@@ -33,6 +33,7 @@ const projects: Project[] = [
         title: "Snapchat Memories Downloader",
         description: "A project made to download all memories from Snapchat in bulk. Uses a simple HTML interface to visualise and help download memories.",
         github: "https://github.com/tordar/Download-Snapchat-Memories",
+        live: "https://sats-visualiser.vercel.app/",
         tags: ["Python", "Snapchat API"],
         image: "/placeholder.svg?height=200&width=300"
     },
