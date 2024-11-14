@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import AboutMe from '../components/AboutMe'
 
 interface Project {
     title: string;
@@ -64,10 +65,7 @@ export default function Home() {
     return (
         <>
             <section className="mb-12">
-                <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-                <p className="text-muted-foreground">
-                    I&apos;m a passionate full-stack developer with experience in React, Next.js, and modern web technologies. When I&apos;m not working, I&apos;m probably running, cooking, taking pictures, or planning my next adventure.
-                </p>
+                <AboutMe/>
             </section>
 
             <section>
