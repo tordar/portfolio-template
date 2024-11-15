@@ -4,13 +4,19 @@ import './globals.css'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { SongRecommendationButton } from '../components/SongRecommendation'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Tordar Tømmervik - Full-stack Developer',
     description: 'Portfolio of Tordar Tømmervik, a passionate full-stack developer',
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/favicon.svg', type: 'image/svg+xml' }
+        ],
+    },
 }
-
 export default function RootLayout({
                                        children,
                                    }: {
@@ -49,7 +55,7 @@ export default function RootLayout({
                         <span className="sr-only">Strava</span>
                     </a>
                     <SongRecommendationButton/>
-                    
+
                 </div>
             </footer>
         </div>
