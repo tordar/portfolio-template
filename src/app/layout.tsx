@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { SongRecommendationButton } from '../components/SongRecommendation'
 
 
@@ -29,6 +29,10 @@ export default function RootLayout({
             <header className="bg-muted py-12 text-center">
                 <h1 className="text-4xl font-bold mb-2">Tordar Tømmervik</h1>
                 <p className="text-xl">Full-stack developer</p>
+                <p className="text-gray-500 flex items-center justify-center">
+                    <MapPin className="w-4 h-4 mr-1"/>
+                    Oslo, Norway
+                </p>
             </header>
 
             <main className="flex-grow container mx-auto px-4 max-w-5xl py-8">
@@ -37,7 +41,7 @@ export default function RootLayout({
 
             <footer className="bg-muted py-6 mt-12">
 
-                <div className="container mx-auto px-4 flex justify-center space-x-4">
+            <div className="container mx-auto px-4 flex justify-center space-x-4">
                     <a href="https://github.com/tordar" target="_blank" rel="noopener noreferrer">
                         <Github className="h-6 w-6"/>
                     </a>
