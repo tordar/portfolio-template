@@ -48,7 +48,7 @@ const projects: Project[] = [
         title: "Event Newsletter",
         description: "A newsletter service built on top of the Broadcast API. Allows the user to subscribe to new events in Oslo, based on their preferences.",
         github: "https://github.com/tordar/events-bot",
-        live: "https://event-email-client-2-production.up.railway.app/",
+        live: "https://concerts.tordar.no/",
         tags: ["Python", "SendGrid"],
         image: "/placeholder.svg?height=200&width=300"
     },
