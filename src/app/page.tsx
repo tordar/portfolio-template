@@ -33,7 +33,6 @@ const projects: Project[] = [
         title: "Snapchat Memories Downloader",
         description: "A project made to download all memories from Snapchat in bulk. Uses a simple HTML interface to visualise and help download memories.",
         github: "https://github.com/tordar/Download-Snapchat-Memories",
-        live: "https://sats-visualiser.vercel.app/",
         tags: ["Python", "Snapchat API"],
         image: "/placeholder.svg?height=200&width=300"
     },
@@ -41,6 +40,7 @@ const projects: Project[] = [
         title: "Sats Map",
         description: "A project where I attempted to extract all the visits I had to Sats and visualised them on a Leaflet map.",
         github: "https://github.com/tordar/sats-visualiser",
+        live: "https://sats-visualiser.vercel.app/",
         tags: ["React", "Leaflet", "Data Visualization"],
         image: "/placeholder.svg?height=200&width=300"
     },
