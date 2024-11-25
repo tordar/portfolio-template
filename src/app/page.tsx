@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import AboutMe from '../components/AboutMe'
+import TimeThemeSwitcher from "@/src/components/TimeTheme";
 
 interface Project {
     title: string;
@@ -25,7 +26,7 @@ const projects: Project[] = [
         title: "Strava-Visualiser",
         description: "A project made to visualise various Strava data. Connects to a personal account and fetches data from the Strava API",
         github: "https://github.com/tordar/shadcn-strava-visualiser",
-        live: "https://shadcn-test-sepia.vercel.app/",
+        live: "https://strava.tordar.no/",
         tags: ["React", "Strava API", "Data Visualization", "Next.js"],
         image: "/placeholder.svg?height=200&width=300"
     },
@@ -66,6 +67,7 @@ export default function Home() {
         <>
             <section className="mb-12">
                 <AboutMe/>
+                
             </section>
 
             <section>
