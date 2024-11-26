@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { HoverCard } from '@/components/ui/hover-card'
+import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import AboutMe from '../components/AboutMe'
 
 interface Project {
@@ -73,7 +74,7 @@ export default function Home() {
                 <h2 className="text-3xl font-semibold mb-4">My Projects</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project, index) => (
-                        <Card key={index} className="flex flex-col overflow-hidden">
+                        <HoverCard key={index} className="flex flex-col overflow-hidden">
                             {/*<img*/}
                             {/*    src={project.image}*/}
                             {/*    alt={`${project.title} preview`}*/}
@@ -106,7 +107,7 @@ export default function Home() {
                                     )}
                                 </div>
                             </CardFooter>
-                        </Card>
+                        </HoverCard>
                     ))}
                 </div>
             </section>
