@@ -93,7 +93,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme }}>
-            <div className={`min-h-screen transition-colors duration-500 ${theme}`}
+            <div className={`min-h-screen transition-colors duration-100 ${theme}`}
                  style={theme === 'sky' ? {backgroundColor: skyBackgroundColor } : {}}>
                 {children}
             </div>

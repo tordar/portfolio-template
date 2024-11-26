@@ -31,7 +31,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
         <ThemeProvider>
-            <div className="min-h-screen font-sans flex flex-col transition-colors duration-500">
+            <div className="min-h-screen font-sans flex flex-col transition-colors duration-100">
                 <header className="py-12 text-center relative bg-muted">
                     <div className="absolute top-4 right-4">
                         <ThemeSwitcher/>

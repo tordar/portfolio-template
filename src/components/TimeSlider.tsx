@@ -95,7 +95,7 @@ export function TimeSlider() {
     return (
         <div className="w-full flex justify-center">
             <div
-                className="w-[95%] h-12 relative cursor-pointer"
+                className="w-[90%] h-12 relative cursor-pointer"
                 ref={sliderRef}
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
@@ -117,7 +117,7 @@ export function TimeSlider() {
                     }}
                 >
                     <div className="bg-background px-2 py-1 rounded-full border border-current select-none cursor-ew-resize">
-                        <span className="text-xl font-mono tabular-nums">{time}</span>
+                        <span className="text-l font-medium tabular-nums">{time}</span>
                     </div>
                 </div>
             </div>
