@@ -30,24 +30,21 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        >
-            <div className="min-h-screen bg-background font-sans flex flex-col">
-                <header className="bg-muted pt-12 pb-6 text-center relative">
+        <ThemeProvider>
+            <div className="min-h-screen font-sans flex flex-col transition-colors duration-500">
+                <header className="py-12 text-center relative bg-muted">
                     <div className="absolute top-4 right-4">
-                        <ThemeSwitcher />
+                        <ThemeSwitcher/>
                     </div>
                     <h1 className="text-4xl font-bold mb-2">Tordar Tømmervik</h1>
                     <p className="text-xl">Full-stack developer</p>
-                    <p className="text-muted-foreground flex items-center justify-center mt-2">
+                    <p className="flex items-center justify-center mt-2 mb-4 opacity-80">
                         <MapPin className="w-4 h-4 mr-1"/>
                         Oslo, Norway
                     </p>
-                    <TimeSlider />
+                    <div className="absolute bottom-0 left-0 right-0">
+                        <TimeSlider/>
+                    </div>
                 </header>
                 <main className="flex-grow container mx-auto px-4 max-w-5xl py-8">
                     {children}
@@ -64,8 +61,10 @@ export default function RootLayout({
                             <Mail className="h-6 w-6"/>
                         </a>
                         <a href="https://www.strava.com/athletes/29745314" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="w-6 h-6 fill-current">
-                                <path d="M158.4 0L7 292h89.2l62.2-116.1L220.1 292h88.5zm150.2 292l-43.9 88.2-44.6-88.2h-67.6l112.2 220 111.5-220z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                                 className="w-6 h-6 fill-current">
+                                <path
+                                    d="M158.4 0L7 292h89.2l62.2-116.1L220.1 292h88.5zm150.2 292l-43.9 88.2-44.6-88.2h-67.6l112.2 220 111.5-220z"/>
                             </svg>
                             <span className="sr-only">Strava</span>
                         </a>
@@ -73,9 +72,9 @@ export default function RootLayout({
                     </div>
                 </footer>
             </div>
-            <SpeedInsights />
-            <Analytics />
         </ThemeProvider>
+        <SpeedInsights/>
+        <Analytics/>
         </body>
         </html>
     )

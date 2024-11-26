@@ -10,7 +10,7 @@ export const HoverCard = React.forwardRef<HTMLDivElement, HoverCardProps>(
             <Card
                 ref={ref}
                 className={cn(
-                    "transition-all duration-100 ease-in-out hover:-translate-y-0.5 hover:shadow-lg",
+                    "transition-all duration-100 ease-in-out hover:-translate-y-0.5 hover:shadow-lg bg-card",
                     className
                 )}
                 {...props}

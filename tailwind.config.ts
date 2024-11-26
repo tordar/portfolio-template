@@ -63,7 +63,7 @@ const config: Config = {
 					to: { height: "var(--radix-accordion-content-height)" },
 				},
 				"accordion-up": {
-					from: { height: "var(radix-accordion-content-height)" },
+					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0" },
 				},
 			},
@@ -74,6 +74,14 @@ const config: Config = {
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
+	variants: {
+		extend: {
+			backgroundColor: ['sky'],
+			textColor: ['sky'],
+			rotate: ['sky'],
+			scale: ['sky'],
+		},
+	},
 }
 
 export default config
