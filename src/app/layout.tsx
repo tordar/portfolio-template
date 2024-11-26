@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { SongRecommendationButton } from '../components/SongRecommendation'
 
 
@@ -63,6 +64,7 @@ export default function RootLayout({
                 </div>
             </footer>
         </div>
+        <SpeedInsights />
         </body>
         </html>
     )
