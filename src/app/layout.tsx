@@ -5,6 +5,8 @@ import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { SongRecommendationButton } from '../components/SongRecommendation'
+import { ThemeProvider } from "../components/theme-provider"
+import { ThemeSwitcher } from "../components/ThemeSwitcher"
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,13 +27,22 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
         <div className="min-h-screen bg-background font-sans flex flex-col">
-            <header className="bg-muted py-12 text-center">
+            <header className="bg-muted py-12 text-center relative">
+                <div className="absolute top-4 right-4">
+                    <ThemeSwitcher/>
+                </div>
                 <h1 className="text-4xl font-bold mb-2">Tordar Tømmervik</h1>
                 <p className="text-xl">Full-stack developer</p>
-                <p className="text-gray-500 flex items-center justify-center">
+                <p className="text-muted-foreground flex items-center justify-center mt-2">
                     <MapPin className="w-4 h-4 mr-1"/>
                     Oslo, Norway
                 </p>
@@ -43,7 +54,7 @@ export default function RootLayout({
 
             <footer className="bg-muted py-6 mt-12">
 
-            <div className="container mx-auto px-4 flex justify-center space-x-4">
+                <div className="container mx-auto px-4 flex justify-center space-x-4">
                     <a href="https://github.com/tordar" target="_blank" rel="noopener noreferrer">
                         <Github className="h-6 w-6"/>
                     </a>
@@ -54,7 +65,7 @@ export default function RootLayout({
                         <Mail className="h-6 w-6"/>
                     </a>
                     <a href="https://www.strava.com/athletes/29745314" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="w-6 h-6 fill-current">
                             <path
                                 d="M158.4 0L7 292h89.2l62.2-116.1L220.1 292h88.5zm150.2 292l-43.9 88.2-44.6-88.2h-67.6l112.2 220 111.5-220z"/>
                         </svg>
@@ -67,6 +78,7 @@ export default function RootLayout({
         </div>
         <SpeedInsights />
         <Analytics />
+        </ThemeProvider>
         </body>
         </html>
     )

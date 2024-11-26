@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
 	darkMode: ["class"],
 	content: [
 		'./pages/**/*.{ts,tsx}',
@@ -17,46 +18,39 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				border: 'rgb(229, 231, 235)',
-				input: 'rgb(243, 244, 246)',
-				ring: 'rgb(209, 213, 219)',
-				background: 'rgb(250, 250, 250)',
-				foreground: 'rgb(31, 41, 55)',
+				border: "rgb(var(--border) / <alpha-value>)",
+				input: "rgb(var(--input) / <alpha-value>)",
+				ring: "rgb(var(--ring) / <alpha-value>)",
+				background: "rgb(var(--background) / <alpha-value>)",
+				foreground: "rgb(var(--foreground) / <alpha-value>)",
 				primary: {
-					DEFAULT: 'rgb(79, 70, 229)',
-					foreground: 'rgb(255, 255, 255)'
+					DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+					foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
 				},
 				secondary: {
-					DEFAULT: 'rgb(107, 114, 128)',
-					foreground: 'rgb(255, 255, 255)'
+					DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
+					foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
 				},
 				destructive: {
-					DEFAULT: 'rgb(239, 68, 68)',
-					foreground: 'rgb(255, 255, 255)'
+					DEFAULT: "rgb(var(--destructive) / <alpha-value>)",
+					foreground: "rgb(var(--destructive-foreground) / <alpha-value>)",
 				},
 				muted: {
-					DEFAULT: 'rgb(243, 244, 246)',
-					foreground: 'rgb(107, 114, 128)'
+					DEFAULT: "rgb(var(--muted) / <alpha-value>)",
+					foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
 				},
 				accent: {
-					DEFAULT: 'rgb(243, 244, 246)',
-					foreground: 'rgb(31, 41, 55)'
+					DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+					foreground: "rgb(var(--accent-foreground) / <alpha-value>)",
 				},
 				popover: {
-					DEFAULT: 'rgb(255, 255, 255)',
-					foreground: 'rgb(31, 41, 55)'
+					DEFAULT: "rgb(var(--popover) / <alpha-value>)",
+					foreground: "rgb(var(--popover-foreground) / <alpha-value>)",
 				},
 				card: {
-					DEFAULT: 'rgb(255, 255, 255)',
-					foreground: 'rgb(31, 41, 55)'
+					DEFAULT: "rgb(var(--card) / <alpha-value>)",
+					foreground: "rgb(var(--card-foreground) / <alpha-value>)",
 				},
-				chart: {
-					'1': 'rgb(79, 70, 229)',
-					'2': 'rgb(59, 130, 246)',
-					'3': 'rgb(16, 185, 129)',
-					'4': 'rgb(245, 158, 11)',
-					'5': 'rgb(239, 68, 68)'
-				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -64,20 +58,22 @@ module.exports = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
-				'accordion-down': {
-					from: { height: 0 },
-					to: { height: 'var(--radix-accordion-content-height)' }
+				"accordion-down": {
+					from: { height: "0" },
+					to: { height: "var(--radix-accordion-content-height)" },
 				},
-				'accordion-up': {
-					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: 0 }
-				}
+				"accordion-up": {
+					from: { height: "var(radix-accordion-content-height)" },
+					to: { height: "0" },
+				},
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
-		}
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
+			},
+		},
 	},
 	plugins: [require("tailwindcss-animate")],
 }
+
+export default config
