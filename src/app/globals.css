@@ -47,6 +47,9 @@
     --input: 75 85 99;
     --ring: 79 70 229;
   }
+  .sky {
+    --muted: var(--muted-bg-color, 210 40% 96.1%);
+  }
 }
 
 @layer base {

@@ -8,14 +8,13 @@ interface ThemeContextType {
     theme: Theme
     setTheme: (theme: Theme) => void
     updateSkyTheme: (time: number) => void
-    
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>('light')
-    const [skyBackgroundColor, setSkyBackgroundColor] = useState('#87CEEB')
+    const [skyBackgroundColor, setSkyBackgroundColor] = useState('')
 
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme') as Theme
@@ -31,7 +30,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         document.documentElement.classList.remove('light', 'dark', 'sky')
         document.documentElement.classList.add(theme)
         localStorage.setItem('theme', theme)
-    }, [theme])
+        
+        if (theme === 'sky') {
+            document.documentElement.style.setProperty('--muted-bg-color', skyBackgroundColor)
+        } else {
+            document.documentElement.style.removeProperty('--muted-bg-color')
+        }
+    }, [theme, skyBackgroundColor])
 
     const updateSkyTheme = (time: number) => {
         const hour = time / 60
@@ -89,7 +94,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return (
         <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme }}>
             <div className={`min-h-screen transition-colors duration-500 ${theme}`}
-                 style={theme === 'sky' ? { backgroundColor: skyBackgroundColor } : {}}>
+                 style={theme === 'sky' ? {backgroundColor: skyBackgroundColor } : {}}>
                 {children}
             </div>
         </ThemeContext.Provider>
