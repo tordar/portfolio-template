@@ -17,8 +17,12 @@ export default function AboutMe() {
                 <h2 className="text-3xl font-semibold mb-4">About Me</h2>
                 <p className="text-muted-foreground mb-4">
                     I&apos;m a full-stack developer with experience in React, Next.js, and modern web technologies.
-                    I&apos;m a largely self-taught developer, after beginning to learn Python during the pandemic, to accomodate
-                    my degree in international relations. 
+                    I&apos;m a largely self-taught developer, after beginning to learn Python during the pandemic,
+                    to accomodate my degree in international relations. From there, I went on to work for Norwegian
+                    Red Cross, maintaining their in-house developed web application Nyss. Here, I gained experience
+                    in working with the end-user, product ownership and managing a large codebase. I also enjoy
+                    working on different side-projects, trying to learn new technologies, and keeping up to date
+                    with new developments and ways of making things.
                 </p>
                 <p className="text-muted-foreground mb-4">
                     When I&apos;m not coding, you can find me:
