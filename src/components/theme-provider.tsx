@@ -39,6 +39,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         } else {
             document.documentElement.style.removeProperty('--muted-bg-color')
             document.documentElement.style.removeProperty('--sky-text-color')
+            document.documentElement.style.removeProperty('--muted-foreground')
+            
         }
     }, [theme, skyBackgroundColor, textColor])
 
