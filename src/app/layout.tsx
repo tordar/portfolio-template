@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Tordar Tømmervik - Full-stack Developer',
-    description: 'Portfolio of Tordar Tømmervik, a passionate full-stack developer'
+    description: 'Portfolio of Tordar Tømmervik, a full-stack developer'
 }
 
 export default function RootLayout({
@@ -24,11 +24,18 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
+        <head>
+            <title>{metadata.title as string}</title>
+            <meta name="description" content={metadata.description as string}/>
+            <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+            <meta httpEquiv="Pragma" content="no-cache"/>
+            <meta httpEquiv="Expires" content="0"/>
+        </head>
         <body className={inter.className}>
         <ThemeProvider>
-            <DynamicFavicon />
+            <DynamicFavicon/>
             <div className="min-h-screen font-sans flex flex-col transition-colors duration-100">
-            <header className="py-12 text-center relative bg-muted">
+                <header className="py-12 text-center relative bg-muted">
                     <div className="absolute top-4 right-4">
                         <ThemeSwitcher/>
                     </div>

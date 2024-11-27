@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useTheme } from './theme-provider'
 
 export function DynamicFavicon() {
@@ -42,19 +42,31 @@ export function DynamicFavicon() {
 
         const faviconUrl = `data:image/svg+xml,${encodeURIComponent(faviconSvg)}`
 
-        const existingLink = document.querySelector("link[rel*='icon']") as HTMLLinkElement | null
-        const link = existingLink || document.createElement('link')
+        // Update or create standard favicon
+        updateLink('shortcut icon', faviconUrl)
 
-        link.setAttribute('type', 'image/svg+xml')
-        link.setAttribute('rel', 'shortcut icon')
-        link.setAttribute('href', faviconUrl)
+        // Update or create Apple touch icon
+        updateLink('apple-touch-icon', faviconUrl)
 
-        if (!existingLink) {
-            document.head.appendChild(link)
-        }
+        // Update or create mask-icon for Safari pinned tabs
+        updateLink('mask-icon', faviconUrl, text)
+
     }, [theme, skyBackgroundColor])
 
     return null
+}
+
+function updateLink(rel: string, href: string, color?: string) {
+    let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement
+    if (!link) {
+        link = document.createElement('link')
+        document.head.appendChild(link)
+    }
+    link.setAttribute('rel', rel)
+    link.setAttribute('href', href)
+    if (color && rel === 'mask-icon') {
+        link.setAttribute('color', color)
+    }
 }
 
 // Helper function to determine brightness of a color
