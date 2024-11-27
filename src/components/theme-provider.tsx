@@ -8,6 +8,7 @@ interface ThemeContextType {
     theme: Theme
     setTheme: (theme: Theme) => void
     updateSkyTheme: (time: number) => void
+    skyBackgroundColor: string
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -91,7 +92,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
     
     return (
-        <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme }}>
+        <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme, skyBackgroundColor }}>
             <div className={`min-h-screen transition-colors duration-100 ${theme}`}
                  style={theme === 'sky' ? {backgroundColor: skyBackgroundColor, color: textColor} : {}}>
                 {children}

@@ -8,18 +8,13 @@ import { SongRecommendationButton } from '../components/SongRecommendation'
 import { ThemeProvider } from "../components/theme-provider"
 import { ThemeSwitcher } from "../components/ThemeSwitcher"
 import { TimeSlider } from "../components/TimeSlider"
+import { DynamicFavicon } from "../components/DynamicFavicon"
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Tordar Tømmervik - Full-stack Developer',
-    description: 'Portfolio of Tordar Tømmervik, a passionate full-stack developer',
-    icons: {
-        icon: [
-            { url: '/favicon.ico', sizes: 'any' },
-            { url: '/favicon.svg', type: 'image/svg+xml' }
-        ],
-    },
+    description: 'Portfolio of Tordar Tømmervik, a passionate full-stack developer'
 }
 
 export default function RootLayout({
@@ -31,8 +26,9 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
         <ThemeProvider>
+            <DynamicFavicon />
             <div className="min-h-screen font-sans flex flex-col transition-colors duration-100">
-                <header className="py-12 text-center relative bg-muted">
+            <header className="py-12 text-center relative bg-muted">
                     <div className="absolute top-4 right-4">
                         <ThemeSwitcher/>
                     </div>

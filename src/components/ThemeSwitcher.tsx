@@ -14,13 +14,25 @@ import {
 export function ThemeSwitcher() {
     const { theme, setTheme } = useTheme()
 
+    const skyGradient = "bg-gradient-to-r from-sky-400 via-rose-400 to-indigo-600"
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon">
-                    <Sun className={`h-[1.2rem] w-[1.2rem] transition-all ${theme === 'light' ? 'scale-100 rotate-0' : 'scale-0 -rotate-90'}`} />
-                    <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 rotate-90'}`} />
-                    <Sunrise className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${theme === 'sky' ? 'scale-100 rotate-0' : 'scale-0 rotate-90'}`} />
+                <Button
+                    variant="outline"
+                    size="icon"
+                    className={`relative overflow-hidden ${theme === 'sky' ? skyGradient : ''}`}
+                >
+                    <Sun className={`h-[1.2rem] w-[1.2rem] transition-all ${
+                        theme === 'light' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'
+                    }`} />
+                    <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
+                        theme === 'dark' ? 'rotate-0 scale-100' : '-rotate-90 scale-0'
+                    }`} />
+                    <Sunrise className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
+                        theme === 'sky' ? 'rotate-0 scale-100 text-white' : 'rotate-90 scale-0'
+                    }`} />
                     <span className="sr-only">Toggle theme</span>
                 </Button>
             </DropdownMenuTrigger>
