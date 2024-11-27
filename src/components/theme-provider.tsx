@@ -15,6 +15,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>('light')
     const [skyBackgroundColor, setSkyBackgroundColor] = useState('')
+    const [textColor, setTextColor] = useState('')
 
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme') as Theme
@@ -30,71 +31,134 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         document.documentElement.classList.remove('light', 'dark', 'sky')
         document.documentElement.classList.add(theme)
         localStorage.setItem('theme', theme)
-        
+
         if (theme === 'sky') {
             document.documentElement.style.setProperty('--muted-bg-color', skyBackgroundColor)
+            document.documentElement.style.setProperty('--sky-text-color', textColor)
+            document.documentElement.style.setProperty('--muted-foreground', textColor)
         } else {
             document.documentElement.style.removeProperty('--muted-bg-color')
+            document.documentElement.style.removeProperty('--sky-text-color')
         }
-    }, [theme, skyBackgroundColor])
+    }, [theme, skyBackgroundColor, textColor])
 
     const updateSkyTheme = (time: number) => {
-        const hour = time / 60
+        const hour = time / 60;
+        const setTextColorForContrast = (backgroundColor: string) => {
+            // Calculate luminance
+            const r = parseInt(backgroundColor.slice(1, 3), 16) / 255;
+            const g = parseInt(backgroundColor.slice(3, 5), 16) / 255;
+            const b = parseInt(backgroundColor.slice(5, 7), 16) / 255;
+
+            // Relative luminance formula
+            const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            
+            // Return white text for dark backgrounds and black text for light backgrounds
+            return luminance > 0.5 ? '#000000' : '#FFFFFF';
+        };
         if (hour >= 0 && hour < 1) {
-            setSkyBackgroundColor('#0A0A28');
+            const bgColor = '#0A0A28';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 1 && hour < 2) {
-            setSkyBackgroundColor('#0F0F32');
+            const bgColor = '#0F0F32';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 2 && hour < 3) {
-            setSkyBackgroundColor('#14143C');
+            const bgColor = '#14143C';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 3 && hour < 4) {
-            setSkyBackgroundColor('#191946');
+            const bgColor = '#191946';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 4 && hour < 5) {
-            setSkyBackgroundColor('#1E1E50');
+            const bgColor = '#1E1E50';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 5 && hour < 6) {
-            setSkyBackgroundColor('#283264');
+            const bgColor = '#FF9678';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 6 && hour < 7) {
-            setSkyBackgroundColor('#5078C8');
+            const bgColor = '#FFB896';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 7 && hour < 8) {
-            setSkyBackgroundColor('#78AAFF');
+            const bgColor = '#FFD7B4';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 8 && hour < 9) {
-            setSkyBackgroundColor('#A0C8FF');
+            const bgColor = '#bdddff';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 9 && hour < 10) {
-            setSkyBackgroundColor('#B4DCFF');
+            const bgColor = '#B4DCFF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 10 && hour < 11) {
-            setSkyBackgroundColor('#C8E6FF');
+            const bgColor = '#C8E6FF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 11 && hour < 12) {
-            setSkyBackgroundColor('#DCF0FF');
+            const bgColor = '#DCF0FF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 12 && hour < 13) {
-            setSkyBackgroundColor('#F0FFFF');
+            const bgColor = '#F0FFFF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 13 && hour < 14) {
-            setSkyBackgroundColor('#E6FAFF');
+            const bgColor = '#E6FAFF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 14 && hour < 15) {
-            setSkyBackgroundColor('#DCF0FF');
+            const bgColor = '#DCF0FF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 15 && hour < 16) {
-            setSkyBackgroundColor('#C8DCFF');
+            const bgColor = '#C8DCFF';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 16 && hour < 17) {
-            setSkyBackgroundColor('#FFC896');
+            const bgColor = '#FFD7B4';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 17 && hour < 18) {
-            setSkyBackgroundColor('#FF9664');
+            const bgColor = '#FFB896';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 18 && hour < 19) {
-            setSkyBackgroundColor('#FF6446');
+            const bgColor = '#FF9678';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 19 && hour < 20) {
-            setSkyBackgroundColor('#FF4632');
+            const bgColor = '#FF8C6E';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 20 && hour < 21) {
-            setSkyBackgroundColor('#643278');
+            const bgColor = '#5A3264';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 21 && hour < 22) {
-            setSkyBackgroundColor('#462864');
+            const bgColor = '#46325A';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 22 && hour < 23) {
-            setSkyBackgroundColor('#321E50');
+            const bgColor = '#322846';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         } else if (hour >= 23 && hour < 24) {
-            setSkyBackgroundColor('#1E143C');
+            const bgColor = '#1E143C';
+            setSkyBackgroundColor(bgColor);
+            setTextColor(setTextColorForContrast(bgColor));
         }
     }
-
+    
     return (
         <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme }}>
             <div className={`min-h-screen transition-colors duration-100 ${theme}`}
-                 style={theme === 'sky' ? {backgroundColor: skyBackgroundColor } : {}}>
+                 style={theme === 'sky' ? {backgroundColor: skyBackgroundColor, color: textColor} : {}}>
                 {children}
             </div>
         </ThemeContext.Provider>

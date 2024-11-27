@@ -49,6 +49,8 @@
   }
   .sky {
     --muted: var(--muted-bg-color, 210 40% 96.1%);
+    --foreground: var(--sky-text-color, 31 41 55);
+    --muted-foreground: var(--sky-text-color, 31 41 55);
   }
 }
 

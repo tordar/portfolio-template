@@ -104,7 +104,7 @@ export function TimeSlider() {
             >
                 <div className="absolute inset-0 flex items-center">
                     <div
-                        className={`h-[1px] w-full bg-current transition-opacity duration-300 ${
+                        className={`h-[1px] w-full bg-black transition-opacity duration-300 ${
                             isHovering || isDraggingRef.current ? 'opacity-100' : 'opacity-0'
                         }`}
                     />
@@ -116,8 +116,8 @@ export function TimeSlider() {
                         transform: 'translateX(-50%)',
                     }}
                 >
-                    <div className="bg-background px-2 py-1 rounded-full border border-current select-none cursor-ew-resize">
-                        <span className="text-l font-medium tabular-nums">{time}</span>
+                    <div className="bg-white px-2 py-1 rounded-full border border-black select-none cursor-ew-resize">
+                        <span className="text-l font-medium tabular-nums text-black">{time}</span>
                     </div>
                 </div>
             </div>
