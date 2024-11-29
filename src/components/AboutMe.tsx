@@ -3,6 +3,7 @@ import profileImage from '../../src/app/resources/img.jpeg'
 
 export default function AboutMe() {
     return (
+        <section  className="mb-12">
         <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
             <div className="md:w-1/3">
                 <Image
@@ -39,5 +40,6 @@ export default function AboutMe() {
                 </Button>*/}
             </div>
         </div>
+        </section>
     )
 }
