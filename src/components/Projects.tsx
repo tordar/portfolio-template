@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { HoverCard } from '@/components/ui/hover-card'
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import React from "react";
 
 interface Project {
     title: string;
@@ -64,46 +65,46 @@ const projects: Project[] = [
 
 export default function Projects() {
     return(
-    <section>
-    <h2 className="text-3xl font-semibold mb-4">My Projects</h2>
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-            <HoverCard key={index} className="flex flex-col overflow-hidden">
-                {/*<img*/}
-                {/*    src={project.image}*/}
-                {/*    alt={`${project.title} preview`}*/}
-                {/*    className="w-full h-48 object-cover"*/}
-                {/*/>*/}
-                <CardHeader>
-                    <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, tagIndex) => (
-                            <Badge key={tagIndex} variant="secondary">{tag}</Badge>
-                        ))}
-                    </div>
-                </CardContent>
-                <CardFooter className="mt-auto">
-                    <div className="flex flex-col sm:flex-row gap-2 w-full">
-                        {project.live && (
-                            <Button asChild className="w-full sm:w-auto">
-                                <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                    Website
-                                </a>
-                            </Button>
-                        )}
-                        <Button asChild variant="secondary" className="w-full sm:w-auto">
-                            <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                Source Code
-                            </a>
-                        </Button>
-                    </div>
-                </CardFooter>
-            </HoverCard>
-        ))}
-    </div>
-    </section>
+        <section>
+            <h2 className="text-3xl font-semibold mb-4">My Projects</h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {projects.map((project, index) => (
+                    <HoverCard key={index} className="flex flex-col overflow-hidden">
+                        {/*<img*/}
+                        {/*    src={project.image}*/}
+                        {/*    alt={`${project.title} preview`}*/}
+                        {/*    className="w-full h-48 object-cover"*/}
+                        {/*/>*/}
+                        <CardHeader>
+                            <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
+                            <CardDescription>{project.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex flex-wrap gap-2">
+                                {project.tags.map((tag, tagIndex) => (
+                                    <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                                ))}
+                            </div>
+                        </CardContent>
+                        <CardFooter className="mt-auto">
+                            <div className="flex flex-col sm:flex-row gap-2 w-full">
+                                {project.live && (
+                                    <Button asChild className="w-full sm:w-auto">
+                                        <a href={project.live} target="_blank" rel="noopener noreferrer">
+                                            Website
+                                        </a>
+                                    </Button>
+                                )}
+                                <Button asChild variant="secondary" className="w-full sm:w-auto">
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                        Source Code
+                                    </a>
+                                </Button>
+                            </div>
+                        </CardFooter>
+                    </HoverCard>
+                ))}
+            </div>
+        </section>
     )
 }
