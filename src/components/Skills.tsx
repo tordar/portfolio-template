@@ -59,9 +59,10 @@ export default function SkillsSection() {
     return (
         <section className="py-16">
             <h2 className="text-3xl font-semibold mb-4">Tech Stack</h2>
+            <p className="text-muted-foreground mb-4">Preferred technologies when building new things</p>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {skills.map((skill, index) => (
-                    <TechCard key={index} skill={skill} />
+                    <TechCard key={index} skill={skill}/>
                 ))}
             </div>
         </section>
