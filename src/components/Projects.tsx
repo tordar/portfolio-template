@@ -67,6 +67,7 @@ export default function Projects() {
     return(
         <section>
             <h2 className="text-3xl font-semibold mb-4">My Projects</h2>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             <p className="text-muted-foreground mb-4">A selection of various personal projects I'm working on</p>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project, index) => (
