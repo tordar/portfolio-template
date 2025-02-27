@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useTheme } from './theme-provider'
 
 export function DynamicFavicon() {
-    const { theme, skyBackgroundColor } = useTheme()
+    const { theme, skyBackgroundColor, skyPrimaryColor } = useTheme()
 
     useEffect(() => {
         const getColors = () => {
@@ -13,8 +13,14 @@ export function DynamicFavicon() {
                     return { bg: '#ffffff', text: '#1a1a1a' }
                 case 'dark':
                     return { bg: '#1a1a1a', text: '#ffffff' }
-                case 'sky':
-                    return { bg: skyBackgroundColor, text: skyBackgroundColor ? (getBrightness(skyBackgroundColor) > 128 ? '#1a1a1a' : '#ffffff') : '#ffffff' }
+                case 'sky': {
+                    // Use the primary color if available, or extract from gradient as fallback
+                    const bgColor = skyPrimaryColor || extractColorFromGradient(skyBackgroundColor);
+                    return { 
+                        bg: bgColor, 
+                        text: bgColor ? (getBrightness(bgColor) > 128 ? '#1a1a1a' : '#ffffff') : '#ffffff' 
+                    }
+                }
                 default:
                     return { bg: '#1a1a1a', text: '#ffffff' }
             }
@@ -51,9 +57,23 @@ export function DynamicFavicon() {
         // Update or create mask-icon for Safari pinned tabs
         updateLink('mask-icon', faviconUrl, text)
 
-    }, [theme, skyBackgroundColor])
+    }, [theme, skyBackgroundColor, skyPrimaryColor])
 
     return null
+}
+
+// Function to extract a color from the gradient string
+function extractColorFromGradient(gradientString: string): string {
+    if (!gradientString) return '#1a1a1a';
+    
+    // Extract the first color in the gradient
+    const colorMatch = gradientString.match(/#[0-9a-fA-F]{6}/);
+    if (colorMatch) {
+        return colorMatch[0];
+    }
+    
+    // If we can't find a hex color, return a default
+    return '#1a1a1a';
 }
 
 function updateLink(rel: string, href: string, color?: string) {
@@ -71,9 +91,17 @@ function updateLink(rel: string, href: string, color?: string) {
 
 // Helper function to determine brightness of a color
 function getBrightness(color: string): number {
-    const hex = color.replace('#', '')
-    const r = parseInt(hex.substr(0, 2), 16)
-    const g = parseInt(hex.substr(2, 2), 16)
-    const b = parseInt(hex.substr(4, 2), 16)
-    return (r * 299 + g * 587 + b * 114) / 1000
+    // Remove any non-hex characters (like # or rgb())
+    const colorString = color.replace(/[^0-9a-fA-F]/g, '');
+    
+    // Handle a 6 character hex string
+    if (colorString.length >= 6) {
+        const r = parseInt(colorString.substr(0, 2), 16);
+        const g = parseInt(colorString.substr(2, 2), 16);
+        const b = parseInt(colorString.substr(4, 2), 16);
+        return (r * 299 + g * 587 + b * 114) / 1000;
+    }
+    
+    // Default brightness for dark color
+    return 50;
 }

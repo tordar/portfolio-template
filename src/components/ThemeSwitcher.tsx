@@ -14,7 +14,7 @@ import {
 export function ThemeSwitcher() {
     const { theme, setTheme } = useTheme()
 
-    const skyGradient = "bg-gradient-to-r from-sky-400 via-rose-400 to-indigo-600"
+    const skyGradient = "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500"
 
     return (
         <DropdownMenu>

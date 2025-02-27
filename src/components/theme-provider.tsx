@@ -9,6 +9,7 @@ interface ThemeContextType {
     setTheme: (theme: Theme) => void
     updateSkyTheme: (time: number) => void
     skyBackgroundColor: string
+    skyPrimaryColor?: string  // Add a primary color for favicon
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -16,6 +17,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>('light')
     const [skyBackgroundColor, setSkyBackgroundColor] = useState('')
+    const [skyPrimaryColor, setSkyPrimaryColor] = useState('')
     const [textColor, setTextColor] = useState('')
 
     useEffect(() => {
@@ -49,11 +51,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         const hour = Math.floor(time / 60);
         const minute = time % 60;
 
+        // Primary colors for each hour
         const hourlyColors = [
             '#0A0A28', '#0F0F32', '#14143C', '#191946', '#1E1E50', '#FF9678',
             '#FFB896', '#FFD7B4', '#bdddff', '#B4DCFF', '#C8E6FF', '#DCF0FF',
             '#F0FFFF', '#E6FAFF', '#DCF0FF', '#C8DCFF', '#FFD7B4', '#FFB896',
             '#FF9678', '#FF8C6E', '#5A3264', '#46325A', '#322846', '#1E143C'
+        ];
+
+        // Gradient complementary colors for each hour - with more contrast for intensity
+        const hourlyGradientColors = [
+            '#4040A0', '#3F3FA2', '#4444BC', '#4949C6', '#4E4ED0', '#FF5040',
+            '#FF9040', '#FFBE80', '#80CCFF', '#40B0FF', '#60C0FF', '#90E0FF',
+            '#C0FFFF', '#A0F0FF', '#90E0FF', '#80C0FF', '#FFBE80', '#FF9040',
+            '#FF5040', '#FF3030', '#A060C0', '#9050B0', '#8040A0', '#603090'
         ];
 
         const interpolateColor = (color1: string, color2: string, factor: number): string => {
@@ -84,17 +95,37 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
         const currentColor = hourlyColors[hour];
         const nextColor = hourlyColors[(hour + 1) % 24];
+        const currentGradientColor = hourlyGradientColors[hour];
+        const nextGradientColor = hourlyGradientColors[(hour + 1) % 24];
         const interpolationFactor = minute / 60;
 
         const bgColor = interpolateColor(currentColor, nextColor, interpolationFactor);
-        setSkyBackgroundColor(bgColor);
+        const gradientColor = interpolateColor(currentGradientColor, nextGradientColor, interpolationFactor);
+        
+        // Generate a mid-point color for more dynamic gradients (optional)
+        const midColor = interpolateColor(bgColor, gradientColor, 0.3);
+        
+        // Enhanced gradient directions with more angles for variety
+        const gradientDirections = [
+            'to right', '135deg', 'to bottom', '225deg', 
+            'to left', '315deg', 'to top', '45deg'
+        ];
+        
+        // Change gradient direction every 3 hours for variety
+        const directionIndex = Math.floor(hour / 3) % gradientDirections.length;
+        const gradientDirection = gradientDirections[directionIndex];
+        
+        // Set a more intense gradient with three color stops
+        const gradientBg = `linear-gradient(${gradientDirection}, ${bgColor}, ${midColor} 50%, ${gradientColor})`;
+        setSkyBackgroundColor(gradientBg);
+        setSkyPrimaryColor(bgColor); // Store the primary color for the favicon
         setTextColor(setTextColorForContrast(bgColor));
     };
     
     return (
-        <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme, skyBackgroundColor }}>
+        <ThemeContext.Provider value={{ theme, setTheme, updateSkyTheme, skyBackgroundColor, skyPrimaryColor }}>
             <div className={`min-h-screen transition-colors duration-100 ${theme}`}
-                 style={theme === 'sky' ? {backgroundColor: skyBackgroundColor, color: textColor} : {}}>
+                 style={theme === 'sky' ? {backgroundImage: skyBackgroundColor, color: textColor} : {}}>
                 {children}
             </div>
         </ThemeContext.Provider>

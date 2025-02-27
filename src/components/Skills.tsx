@@ -27,7 +27,7 @@ const TechTile = ({ skill }: { skill: Skill }) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <div className="flex items-center justify-center aspect-square bg-slate-100 dark:bg-slate-800 border border-border rounded-lg shadow hover:shadow-md hover:bg-accent transition-all duration-200 cursor-pointer p-4 md:p-6">
+                <div className="flex items-center justify-center aspect-square bg-slate-100 dark:bg-slate-800 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90 border border-border rounded-lg shadow hover:shadow-md hover:bg-accent transition-all duration-200 cursor-pointer p-4 md:p-6">
                     <Image
                         src={skill.imageUrl}
                         width={64}
@@ -37,7 +37,7 @@ const TechTile = ({ skill }: { skill: Skill }) => {
                     />
                 </div>
             </PopoverTrigger>
-            <PopoverContent className="w-80">
+            <PopoverContent className="w-80 backdrop-blur-sm bg-opacity-90 border-border">
                 <div className="space-y-2">
                     <h4 className="font-medium leading-none">{skill.name}</h4>
                     <p className="text-sm text-muted-foreground">
