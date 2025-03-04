@@ -55,10 +55,11 @@ const projects: Project[] = [
             image: "/placeholder.svg?height=200&width=300"
         },
         {
-            title: "Garmin Sleep Extractor",
-            description: "A Python script designed to extract the sleep data from Garmin Connect. Can also be used to extract other useful data.",
-            github: "https://github.com/tordar/garmin-sleep-extractor",
-            tags: ["Python", "Garmin Connect"],
+            title: "Loxodonta Function API",
+            description: "A simple API for personal use. Built with Vercel serverless functions and integrates with external APIs to fetch data. Together with Swagger UI inspired interactive documentation",
+            github: "https://github.com/tordar/loxodonta-function-api",
+            live: "https://api.tordar.no/",
+            tags: ["React", "Vercel"],
             image: "/placeholder.svg?height=200&width=300"
         }
     ]
