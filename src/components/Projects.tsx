@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { HoverCard } from '@/components/ui/hover-card'
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import React from "react";
+import Image from "next/image";
 
 interface Project {
     title: string;
@@ -21,7 +22,7 @@ const projects: Project[] = [
             github: "https://github.com/tordar/food-bank",
             live: "https://mealplanner.tordar.no",
             tags: ["React", "MongoDB", "Next.js", "OAuth 2.0"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/MealPlanner.png"
         },
         {
             title: "Strava-Visualiser",
@@ -29,14 +30,14 @@ const projects: Project[] = [
             github: "https://github.com/tordar/shadcn-strava-visualiser",
             live: "https://strava.tordar.no/",
             tags: ["React", "Strava API", "Data Visualization", "Next.js"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/StravaDashboard.png"
         },
         {
             title: "Snapchat Memories Downloader",
             description: "A project made to download all memories from Snapchat in bulk. Uses a simple HTML interface to visualise and help download memories.",
             github: "https://github.com/tordar/Download-Snapchat-Memories",
             tags: ["Python", "Snapchat API"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/SnapchatDownloader.png"
         },
         {
             title: "Sats Map",
@@ -44,7 +45,7 @@ const projects: Project[] = [
             github: "https://github.com/tordar/sats-visualiser",
             live: "https://sats-visualiser.vercel.app/",
             tags: ["React", "Leaflet", "Data Visualization"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/SatsMap.png"
         },
         {
             title: "Event Newsletter",
@@ -52,7 +53,7 @@ const projects: Project[] = [
             github: "https://github.com/tordar/events-bot",
             live: "https://concerts.tordar.no/",
             tags: ["Python", "SendGrid"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/EventSubscription.png"
         },
         {
             title: "Loxodonta Function API",
@@ -60,7 +61,7 @@ const projects: Project[] = [
             github: "https://github.com/tordar/loxodonta-function-api",
             live: "https://api.tordar.no/",
             tags: ["React", "Vercel"],
-            image: "/placeholder.svg?height=200&width=300"
+            image: "/LoxodontaAPI.png"
         }
     ]
 
@@ -72,12 +73,16 @@ export default function Projects() {
             <p className="text-muted-foreground mb-4">A selection of various personal projects I'm working on</p>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project, index) => (
-                    <HoverCard key={index} className="flex flex-col overflow-hidden">
-                        {/*<img*/}
-                        {/*    src={project.image}*/}
-                        {/*    alt={`${project.title} preview`}*/}
-                        {/*    className="w-full h-48 object-cover"*/}
-                        {/*/>*/}
+                    <HoverCard key={index} className="flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow">
+                        <div className="relative w-full h-48 overflow-hidden">
+                            <Image
+                                src={project.image}
+                                alt={`${project.title} preview`}
+                                fill
+                                className="object-cover transition-transform duration-300 hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
                         <CardHeader>
                             <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
                             <CardDescription>{project.description}</CardDescription>

@@ -55,7 +55,7 @@ export default function AboutMe() {
                     I&apos;m a largely self-taught developer, after beginning to learn Python during the pandemic,
                     to accomodate my degree in international relations. From there, I went on to work for Norwegian
                     Red Cross, maintaining their in-house developed web application Nyss. 
-                    I also enjoy working on different side-projects, trying to learn new technologies, and keeping up to date
+                    I also enjoy working on different side-projects, learning new technologies, and keeping up to date
                     with new developments and ways of making things.
                 </p>
                 <p className="text-muted-foreground mb-4">
@@ -68,9 +68,6 @@ export default function AboutMe() {
                     <li>Going to concerts</li>
                     <li>Planning a new adventure</li>
                 </ul>
-                {/*<Button asChild>
-                    <a href="/Tordar_Tommervik_CV.pdf" target="_blank" rel="noopener noreferrer">View My CV</a>
-                </Button>*/}
             </div>
         </div>
         </section>
