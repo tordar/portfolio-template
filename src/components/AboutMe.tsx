@@ -16,11 +16,15 @@ export default function AboutMe() {
                         className="rounded-full"
                     />
                     <div className="mt-4 w-full max-w-[300px]">
-                        <Button asChild variant="outline" className="w-full">
+                        <Button 
+                            asChild 
+                            variant="outline" 
+                            className="w-full bg-white hover:bg-gray-100 border-gray-300"
+                        >
                             <a 
                                 href="/Tordar_Tommervik_CV.pdf" 
                                 download 
-                                className="flex items-center justify-center gap-2"
+                                className="flex items-center justify-center gap-2 !text-black hover:!text-black"
                             >
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg" 
@@ -32,6 +36,7 @@ export default function AboutMe() {
                                     strokeWidth="2" 
                                     strokeLinecap="round" 
                                     strokeLinejoin="round"
+                                    className="!text-black"
                                 >
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                     <polyline points="7 10 12 15 17 10" />
